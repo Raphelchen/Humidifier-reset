@@ -11,7 +11,7 @@ void setup() {
   Serial.begin(9600);
   Wire.begin();
   byte data;
-  for(int j = 0; j < 11; j++){
+  for(int j = 0; j < 16; j++){
     for(int i = 0; i < 16; i++){
       data = readI2CByte(j*8 + i);
       if (data <= 15){
@@ -41,14 +41,14 @@ void setup() {
     for (int i = 0; i < 512; i++){
       data_to_send[i] = 0xFF;
     } 
-    data_to_send[0] = 0x01;
-    data_to_send[1] = 0x02;
-    data_to_send[2] = 0x03;
-    data_to_send[3] = 0x04;
-    data_to_send[4] = 0x1A;
-    data_to_send[5] = 0x1B;
-    data_to_send[6] = 0x39;
-    data_to_send[7] = 0x82;
+    data_to_send[0] = 0x40;
+    data_to_send[1] = 0x55;
+    data_to_send[2] = 0x51;
+    data_to_send[3] = 0x01;
+    data_to_send[4] = 0x00;
+    data_to_send[5] = 0x55;
+    data_to_send[6] = 0x14;
+    data_to_send[7] = 0x00;
 
     Wire.beginTransmission(ADDR);
     Wire.write(0x00);
@@ -57,14 +57,14 @@ void setup() {
 
     delay(50);
 
-    data_to_send[0] = 0x29;
-    data_to_send[1] = 0xD9;
-    data_to_send[2] = 0xC2;
-    data_to_send[3] = 0x67;
-    data_to_send[4] = 0xC5;
-    data_to_send[5] = 0x3D;
-    data_to_send[6] = 0x3F;
-    data_to_send[7] = 0xD0;
+    data_to_send[0] = 0x10;
+    data_to_send[1] = 0x00;
+    data_to_send[2] = 0x02;
+    data_to_send[3] = 0x2A;
+    data_to_send[4] = 0x21;
+    data_to_send[5] = 0x08;
+    data_to_send[6] = 0x2B;
+    data_to_send[7] = 0x2C;
 
     Wire.beginTransmission(ADDR);
     Wire.write(0x08);
@@ -73,14 +73,14 @@ void setup() {
 
     delay(50);
 
-    data_to_send[0] = 0x01;
-    data_to_send[1] = 0x0C;
-    data_to_send[2] = 0xFF;
-    data_to_send[3] = 0xFF;
-    data_to_send[4] = 0xFF;
-    data_to_send[5] = 0xFF;
-    data_to_send[6] = 0xFF;
-    data_to_send[7] = 0xFF;
+    data_to_send[0] = 0x82;
+    data_to_send[1] = 0x02;
+    data_to_send[2] = 0xA2;
+    data_to_send[3] = 0x0A;
+    data_to_send[4] = 0x0A;
+    data_to_send[5] = 0xAA;
+    data_to_send[6] = 0x0A;
+    data_to_send[7] = 0x00;
     
     Wire.beginTransmission(ADDR);
     Wire.write(0x10);
@@ -89,14 +89,14 @@ void setup() {
 
     delay(50);
 
-    data_to_send[0] = 0xFF;
-    data_to_send[1] = 0xFF;
-    data_to_send[2] = 0xFF;
-    data_to_send[3] = 0xFF;
-    data_to_send[4] = 0xFF;
-    data_to_send[5] = 0xFF;
-    data_to_send[6] = 0xFF;
-    data_to_send[7] = 0xFF;
+    data_to_send[0] = 0x20;
+    data_to_send[1] = 0x2A;
+    data_to_send[2] = 0x04;
+    data_to_send[3] = 0x14;
+    data_to_send[4] = 0x41;
+    data_to_send[5] = 0x07;
+    data_to_send[6] = 0x13;
+    data_to_send[7] = 0x11;
 
     Wire.beginTransmission(ADDR);
     Wire.write(0x18);
@@ -105,10 +105,10 @@ void setup() {
 
     delay(50);
 
-    data_to_send[0] = 0xEB;
-    data_to_send[1] = 0xD3;
-    data_to_send[2] = 0xC5;
-    data_to_send[3] = 0x2D;
+    data_to_send[0] = 0x93;
+    data_to_send[1] = 0x51;
+    data_to_send[2] = 0x96;
+    data_to_send[3] = 0x06;
     data_to_send[4] = 0xFF;
     data_to_send[5] = 0xFF;
     data_to_send[6] = 0xFF;
@@ -173,10 +173,10 @@ void setup() {
     data_to_send[1] = 0xFF;
     data_to_send[2] = 0xFF;
     data_to_send[3] = 0xFF;
-    data_to_send[4] = 0xC0;
-    data_to_send[5] = 0xBE;
-    data_to_send[6] = 0x03;
-    data_to_send[7] = 0x07;
+    data_to_send[4] = 0x7F;
+    data_to_send[5] = 0x51;
+    data_to_send[6] = 0x96;
+    data_to_send[7] = 0x06;
 
     Wire.beginTransmission(ADDR);
     Wire.write(0x40);
@@ -187,12 +187,12 @@ void setup() {
 
     data_to_send[0] = 0x65;
     data_to_send[1] = 0x00;
-    data_to_send[2] = 0x26;
-    data_to_send[3] = 0x01;
-    data_to_send[4] = 0xEE;
+    data_to_send[2] = 0x36;
+    data_to_send[3] = 0xFF;
+    data_to_send[4] = 0xE6;
     data_to_send[5] = 0x00;
-    data_to_send[6] = 0x09;
-    data_to_send[7] = 0x01;
+    data_to_send[6] = 0x38;
+    data_to_send[7] = 0xFF;
 
     Wire.beginTransmission(ADDR);
     Wire.write(0x48);
@@ -201,7 +201,7 @@ void setup() {
 
     delay(50);
 
-    data_to_send[0] = 0x2A;
+    data_to_send[0] = 0x29;
     data_to_send[1] = 0x00;
     data_to_send[2] = 0x00;
     data_to_send[3] = 0x00;
@@ -301,7 +301,7 @@ void setup() {
     delay(100);
 
     Wire.begin();
-    for(int j = 0; j < 11; j++){
+    for(int j = 0; j < 16; j++){
       for(int i = 0; i < 16; i++){
         data = readI2CByte(j*8 + i);
         if (data <= 15){
