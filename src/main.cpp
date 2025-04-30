@@ -17,30 +17,19 @@ void write_dataset_4();
 void setup() {
   //start I2C interface
   Wire.begin();
-  byte data;
-  for(int j = 0; j < 32; j++){
-    for(int i = 0; i < 8; i++){
-      data = readI2CByte(j*8 + i);
-      if (data <= 15){
-        Serial.print("0");
-      }
-      Serial.print(data, HEX);
-      i++;
-      data = readI2CByte(j*8 + i);
-      if (data <= 15){
-        Serial.print("0");
-      }
-      Serial.print(data, HEX);
-      if(i == 15){
-        break;
-      }
-      Serial.print(" ");
-    }
-    Serial.print("\n");
-  }
-
-  Wire.endTransmission();
-  delay(100);
+  pinMode(2, OUTPUT);
+  delay(200);
+  digitalWrite(2,1);
+  delay(200);
+  digitalWrite(2,0);
+  delay(200);
+  digitalWrite(2,1);
+  delay(200);
+  digitalWrite(2,0);
+  delay(200);
+  digitalWrite(2,1);
+  delay(200);
+  digitalWrite(2,0);
 }
 
 void loop() {
@@ -48,9 +37,9 @@ void loop() {
   //wait for connection
   data = readI2CByte(0xF0);
   if(data == 0xFF){
-    digitalWrite(4, 1);
+    digitalWrite(2, 1);
     // read current content at 0x44 to determine current set written on chip
-    delay(500);
+    delay(1000);
     data = readI2CByte(0x44);
     if (data == 0x7F){
       set_to_write = 2;
@@ -92,10 +81,10 @@ void loop() {
       break;
     }
     //delay(1000);
-    digitalWrite(4, 0);
+    digitalWrite(2, 0);
     delay(10000);
   } else {
-    delay(500);
+    delay(1000);
   }
 }
 
