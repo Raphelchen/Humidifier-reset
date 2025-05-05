@@ -17,11 +17,9 @@ void write_dataset_4();
 void setup() {
   //start I2C interface
   Wire.begin();
+  pinMode(0, INPUT_PULLUP);
+  
   pinMode(2, OUTPUT);
-  delay(200);
-  digitalWrite(2,1);
-  delay(200);
-  digitalWrite(2,0);
   delay(200);
   digitalWrite(2,1);
   delay(200);
@@ -84,7 +82,19 @@ void loop() {
     digitalWrite(2, 0);
     delay(10000);
   } else {
-    delay(1000);
+    for(int i = 0; i < 10; i++){
+      if(digitalRead(0)== 0){
+        digitalWrite(2, 1);
+        delay(1000);
+        write_dataset_1();
+        delay(100);
+        write_dataset_1();
+        digitalWrite(2, 0);
+        delay(10000);
+      } else {
+        delay(100);
+      }
+    }
   }
 }
 
